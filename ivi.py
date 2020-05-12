@@ -6,7 +6,7 @@ import auraxium_local as auraxium
 from PlayerClass import PlayerClass
 
 
-def calculate_ivi_score(character_name):
+def calculate_ivi_score(character_name, service_id='example'):
     output = {}
 
     character_id_query = auraxium.Query('character_name', namespace='ps2', name__first_lower=character_name.lower())

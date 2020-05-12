@@ -1,4 +1,4 @@
-import configparser
+from decouple import config
 
 import discord
 from discord.ext import commands
@@ -6,17 +6,16 @@ from tabulate import tabulate
 
 from ivi import calculate_ivi_score
 
-config = configparser.ConfigParser()
-config.read('config.ini')
+TOKEN = config('DISCORD_TOKEN')
 
-TOKEN = config['DEFAULT']['token']
+SERVICE_ID = config('SERVICE_ID', default='example')
 
 bot = commands.Bot(command_prefix='!')
 
 
 @bot.command(name='ivi')
 async def get_ivi(ctx, username: str):
-    data = calculate_ivi_score(username)
+    data = calculate_ivi_score(username, service_id=SERVICE_ID)
 
     embed = discord.Embed(title=data['Playername'])
 

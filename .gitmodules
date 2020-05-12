@@ -1,0 +1,3 @@
+[submodule "auraxium"]
+	path = auraxium
+	url = https://github.com/leonhard-s/auraxium.git
